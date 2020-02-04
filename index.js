@@ -1,31 +1,43 @@
 // const fs = require("fs");
 
-// const axios = require("axios");
+const htmlToPdf = require("html-to-pdf");
 
-// const inquirer = require("inquirer");
+const inquirer = require("inquirer");
 
-// // import util from "util";
+htmlToPdf.convertHTMLFile("index.html","profiles.pdf", function(error,success){
 
-// // import converterHTML from "pdf-puppeteer";
+    if (error) {
 
-// // const converterPDF = util.promisify(converterHTML);
+        console.log("error");
 
-// function askQuestions() {
+        console.log(error);
 
-//     return inquirer.prompt([
-//         {
-//             type: "input",
-//             name: "username",
-//             message: "What is your GitHub Username?"
-//         },
-//         {
-//             type: "input",
-//             name: "color",
-//             message: "What color do you want the PDF file?"
-//         }
-//     ])
-// }
-// askQuestions();
+    } else {
+
+        console.log("Success");
+
+        console.log(success);
+
+    }
+
+});
+
+function askQuestions() {
+
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "username",
+            message: "What is your GitHub Username?"
+        },
+        {
+            type: "input",
+            name: "color",
+            message: "What color do you want the PDF file?"
+        }
+    ])
+}
+askQuestions();
 
 function githubAjaxCall() {
 
