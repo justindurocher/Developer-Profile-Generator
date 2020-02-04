@@ -58,6 +58,8 @@ function githubAjaxCall() {
 
         $(".numFollow").text(response.followers);
 
+        $(".whoFollow").text(response.following);
+
     });
 
 
