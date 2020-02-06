@@ -1,26 +1,20 @@
-// const fs = require("fs");
+const fs = require("fs");
 
-const htmlToPdf = require("html-to-pdf");
+const pdf = require("html-pdf");
+
+const html = fs.readFileSync("./index.html","utf8");
+
+var options = { format : 'Letter'};
+
+
+pdf.create(html,options).toFile('./profiles.pdf' , function(err,res) {
+
+    if (err) return console.log(err);
+    console.log(res);
+
+})
 
 const inquirer = require("inquirer");
-
-htmlToPdf.convertHTMLFile("index.html","profiles.pdf", function(error,success){
-
-    if (error) {
-
-        console.log("error");
-
-        console.log(error);
-
-    } else {
-
-        console.log("Success");
-
-        console.log(success);
-
-    }
-
-});
 
 function askQuestions() {
 
@@ -37,6 +31,7 @@ function askQuestions() {
         }
     ])
 }
+
 askQuestions();
 
 function githubAjaxCall() {
@@ -76,6 +71,8 @@ function githubAjaxCall() {
 
 
 }
+
+
 
 githubAjaxCall();
 
